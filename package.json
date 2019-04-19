@@ -1,9 +1,9 @@
 {
   "name": "language-flow-diagram",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Syntax highlight for flow diagram language",
   "keywords": [],
-  "repository": "https://github.com/atom/language-flow-diagram",
+  "repository": "https://github.com/sdrubolo/language-flow-diagram",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
