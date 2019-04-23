@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+
+\begin{document}
+
+\newcommand{\str}{\texttt{string}\ }
+\newcommand{\opt}{|\ }
+\newcommand{\terminal}[1]{\textbf{`#1'}\ }
+\newcommand{\nt}[1]{\mathrm{#1}}
+
+\begin{align*}
+\nt{Diagram} & \rightarrow \nt{Title}\ \nt{Headers}\ \nt{Flow} \\
+\nt{Title} & \rightarrow \epsilon\ \opt \terminal{title}\ \str \\
+\nt{Headers} & \rightarrow  \epsilon\ \opt \nt{Header}\ \nt{Headers} \\
+\nt{Header} & \rightarrow  \terminal{header for}\ \nt{Entity}\ \nt{Data} \\
+\nt{Data} & \rightarrow \epsilon\ \opt \terminal{data}\  \nt{Assignments}\ \terminal{end data} \\ 
+\nt{Assignments} & \rightarrow \nt{Assignment}\ \terminal{;}\ \opt \nt{Assignment}\ \terminal{;}\ \nt{Assignments}  \\ 
+\nt{Assignment} & \rightarrow \nt{Entity}\ \terminal{=}\ \nt{Values}\ \opt \nt{Entity}\ \terminal{=}\ \nt{Entity} \\
+\nt{Entity} & \rightarrow \texttt{identifier}\\
+\nt{Values} & \rightarrow \str \opt \texttt{int}\ |\ \texttt{bool}\\
+\nt{Flow} & \rightarrow \terminal{group}\ \str \nt{Requests}\ \terminal{end group}\\ 
+         &\ \ \opt \nt{Request} \\
+         &\ \ \opt \terminal{set}\ \nt{Entity}\ \terminal{to}\ \nt{Values} \\
+         &\ \ \opt \terminal{import}\ \texttt{path}\ \terminal{(}\ \nt{EntitySubts}\ \terminal{)}\  \\
+         &\ \ \opt \nt{StartNote}\ \nt{NoteParticipant}\ \terminal{:}\ \str \terminal{end note}\\
+         &\ \ \opt \terminal{participant}\ \nt{Entity}\ \nt{Path}\\
+         &\ \ \opt \terminal{destroy}\ \nt{Entity}\\
+\nt{Requests} & \rightarrow \epsilon\ \opt \nt{Request}\ \nt{Requests}\\
+\nt{Path} & \rightarrow \epsilon\ \opt \terminal{[}\ \texttt{path}\ \terminal{]}\\
+\nt{EntitySubts} & \rightarrow \epsilon\ \opt \nt{EntitySub}\ \opt \nt{EntitySub}\ \terminal{,}\ \nt{EntitySubts}\\
+\nt{NoteParticipant} & \rightarrow \nt{Entity}\ \opt  \nt{Entity}\ \terminal{,}\ \nt{NoteParticipant}\\
+\nt{StartNote} &  \rightarrow \terminal{note left of}\ \opt \terminal{note right of}\ \opt \terminal{note over}\\
+\nt{Request} & \rightarrow \nt{StartBlockRequest}\ \nt{Requests}\ \nt{EndBlockRequest}\\
+        &\ \ \opt \nt{RequestEntity}\ \nt{Arrows}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
+\nt{RequestEntity} & \rightarrow \nt{Entity}\ \nt{JsFunction}\\
+\nt{JsFunction} & \rightarrow \terminal{[]}\ \opt \terminal{[}\ \nt{Entity}\ \terminal{]}\\
+\nt{EntitySub} & \rightarrow \nt{Entity}\ \terminal{:}\ \nt{Entity}\\
+\nt{StartBlockRequest} & \rightarrow \nt{RequestEntity}\ \nt{BlockArrow}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
+\nt{EndBlockRequest} & \rightarrow \nt{RequestEntity}\ \nt{EndBlockArrow}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
+\nt{BlockArrow} & \rightarrow \terminal{$\rightarrow^+$}\ \opt \terminal{$\dashrightarrow^+$}\\
+\nt{EndBlockArrow} & \rightarrow \terminal{$\rightarrow^-$}\ \opt \terminal{$\dashrightarrow^-$}\\
+\nt{Arrows} & \rightarrow \terminal{$\rightarrow$}\ \opt \terminal{$\dashrightarrow$}\ \opt \terminal{$\rightarrow^*$}\ \opt \terminal{$\dashrightarrow^*$}\\
+\nt{RequestData}  & \rightarrow  \epsilon\\
+				&\ \ \opt \terminal{data}\ \nt{FormEncoded}\ \nt{ListAssignment}\ \terminal{end data}\\
+			   &\ \ \opt \terminal{data}\ \nt{JsonEncoded}\ \nt{JsonObj}\ \terminal{end data}\\
+\nt{FormEncoded} & \rightarrow \terminal{application/x-www-form-urlencoded}\\
+\nt{JsonEncoded} & \rightarrow \terminal{application/json}\\
+\nt{ListAssignment} & \rightarrow \nt{Assignment}\ \terminal{;}\ \opt \nt{Assignment}\ \nt{ListAssignment}\\
+\nt{Assignment} & \rightarrow \nt{Entity}\ \terminal{=}\ \nt{Values}\ \opt \nt{Entity}\ \terminal{=}\ \nt{Entity}\\
+\nt{JsonObj} & \rightarrow \terminal{\{}\ \nt{ListPair}\ \terminal{\}}\ \opt \terminal{[}\ \nt{ListJsonValue}\ \terminal{]}\\
+\nt{ListPair} & \rightarrow \epsilon\ \opt \nt{Pair}\ \opt \nt{Pair}\ \terminal{,}\ \nt{ListPair}\\
+\nt{Pair} & \rightarrow \str \terminal{:}\ \nt{JsonValue}\\
+\nt{ListJsonValue} & \rightarrow \epsilon\ \opt \nt{JsonValue}\ \opt \nt{JsonValue}\ \terminal{,}\ \nt{ListJsonValue}\\
+\nt{JsonValue} & \rightarrow \str\\
+			&\ \ \opt \texttt{int}\\
+			&\ \ \opt \nt{JsonObj}\\
+			&\ \ \opt \texttt{bool}\\
+			&\ \ \opt \terminal{null}\\
+			&\ \ \opt \texttt{double}\\
+			&\ \ \opt \nt{Entity}
+\end{align*}
+
+
+\end{document}
