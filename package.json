@@ -1,6 +1,6 @@
 {
   "name": "language-flow-diagram",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Syntax highlight for flow diagram language",
   "keywords": [],
   "repository": "https://github.com/sdrubolo/language-flow-diagram",
