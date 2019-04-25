@@ -37,7 +37,7 @@
 \nt{Request} & \rightarrow \nt{StartBlockRequest}\ \nt{Requests}\ \nt{EndBlockRequest}\\
         &\ \ \opt \nt{RequestEntity}\ \nt{Arrows}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
 \nt{RequestEntity} & \rightarrow \nt{Entity}\ \nt{JsFunction}\\
-\nt{JsFunction} & \rightarrow \terminal{[]}\ \opt \terminal{[}\ \nt{Entity}\ \terminal{]}\\
+\nt{JsFunction} & \rightarrow \epsilon\ \opt \terminal{[}\ \nt{Entity}\ \terminal{]}\\
 \nt{EntitySub} & \rightarrow \nt{Entity}\ \terminal{:}\ \nt{Entity}\\
 \nt{StartBlockRequest} & \rightarrow \nt{RequestEntity}\ \nt{BlockArrow}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
 \nt{EndBlockRequest} & \rightarrow \nt{RequestEntity}\ \nt{EndBlockArrow}\ \nt{RequestEntity}\ \terminal{:}\ \str \nt{RequestData}\\
