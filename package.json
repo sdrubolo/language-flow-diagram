@@ -9,6 +9,6 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "tree-sitter-flow-diagram": "1.0.4"
+    "tree-sitter-flow-diagram": "1.0.5"
   }
 }
