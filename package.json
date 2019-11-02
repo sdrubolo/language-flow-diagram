@@ -1,7 +1,7 @@
 {
   "name": "language-flow-diagram",
   "main": "./lib/language-flow-diagram",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Syntax highlight for websequence diagram augmented language",
   "keywords": [],
   "repository": "https://github.com/sdrubolo/language-flow-diagram",
