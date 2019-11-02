@@ -5,6 +5,9 @@ fileTypes: [ # An array of file extensions.
 ]
 patterns: [
     {
+      include: '#comments'
+    }
+    {
       match: '(\\btitle\\b(\.*))'
       captures : {
        1 : { name : 'keyword.control.diagram' }
@@ -35,7 +38,7 @@ patterns: [
       ]
     }
     {
-      match: '((.(?<!\\[))+)((\\[)(.*)(\\]))?(-->|->|-->\\*|->\\*|-->-|->-|-->\\+|->\\+)((.(?<![\\[\\+-]))+)((\\[)(.*)(\\]))?\\s*:\\s*(.*)'
+      match: '((.(?<!\\[))+)((\\[)(.*)(\\]))?(?<!-)(-->|->|-->\\*|->\\*|-->-|->-|-->\\+|->\\+)((.(?<![\\[\\+-]))+)((\\[)(.*)(\\]))?\\s*:\\s*(.*)'
       captures : {
        1 : { name : 'meta.class.identifier.diagram' }
        4 : { name : 'meta.brace.square.diagram' }
@@ -48,9 +51,6 @@ patterns: [
        13 : { name : 'meta.brace.square.diagram' }
        14 : { name : 'string.quoted.other.diagram' }
       }
-    }
-    {
-      include: '#comments'
     }
     {
       include: '#numbers'
